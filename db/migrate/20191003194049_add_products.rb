@@ -8,5 +8,6 @@ class AddProducts < ActiveRecord::Migration[6.0]
   	Product.create :title => "Pepperoni", :description => "Pizza Pepperoni", :price => 400, :size => 32, :is_spicy => true, :is_veg => false, :is_best_offer => false, :path_to_image => "/images/pepperoni.jpg"
   	Product.create :title => "Picca", :description => "Pizza Picca", :price => 400, :size => 32, :is_spicy => false, :is_veg => false, :is_best_offer => true, :path_to_image => "/images/picca.jpg"
   	Product.create :title => "Vegetable", :description => "Pizza Vegetable", :price => 400, :size => 32, :is_spicy => false, :is_veg => true, :is_best_offer => true, :path_to_image => "/images/vegetable.jpg"
+  	Product.create :title => "Mushroom", :description => "Pizza Mushroom", :price => 400, :size => 32, :is_spicy => false, :is_veg => true, :is_best_offer => true, :path_to_image => "/images/mushroom.jpg"
   end
 end
