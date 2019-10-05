@@ -6,15 +6,36 @@
 
   	<% @products.each do |product| %>
 
-	    <div class="col-sm">
-	      <img src="<%= product.path_to_image %>" width ="240">
-	    </div>
+	    <div class="col-md-3">
+		    <div>
+		      <img src="<%= product.path_to_image %>" width ="240">
+		    </div>
+		    <div>
+		     	<%= product.title %>
+		    </div>
+		    <div>
+		     	<%= product.description %>
+		    </div>
+		    <div>
+		     	Size: <%= product.size%> cm
+		    </div>
+		    <div>
+		     	Prise: <%= product.price %> rub
+		    </div>
+		    <div>
+				<button class="btn btn-success btn-sm">Add to cart</button>
+			</div>
+			<br>
+		</div>
 
+			
+		
     <% end %>
 
     </div>
   </div>
 </div>
-
+<br>
+<br>
 <button class="btn btn-primary" onclick="something()">Click me</button>
 
