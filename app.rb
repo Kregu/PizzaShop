@@ -27,5 +27,17 @@ get '/about' do
 end
 
 post '/cart' do
-  erb 'Hello!'
+  orders_input = params[:orders]
+  @orders = parse_orders_input orders_input
+
+  erb :cart
+end
+
+post '/order' do
+  erb 'Hello from order!'
+end
+
+def parse_orders_input orders_input
+  s = orders_input.gsub(/product_|=|,/, ' ')
+  return Hash[*s.split(' ')] 
 end
