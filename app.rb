@@ -41,3 +41,4 @@ def parse_orders_input orders_input
   s = orders_input.gsub(/product_|=|,/, ' ')
   return Hash[*s.split(' ')] 
 end
+
