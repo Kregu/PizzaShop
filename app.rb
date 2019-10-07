@@ -27,9 +27,9 @@ get '/about' do
 end
 
 post '/cart' do
-  orders_input = params[:orders]
-  @orders = parse_orders_input orders_input
-
+  @orders_input = params[:orders]
+  @orders = parse_orders_input @orders_input
+  @o = {}
   erb :cart
 end
 
