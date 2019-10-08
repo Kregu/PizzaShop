@@ -48,6 +48,8 @@ GEM
       rack-protection (= 2.0.7)
       sinatra (= 2.0.7)
       tilt (~> 2.0)
+    sinatra-reloader (1.0)
+      sinatra-contrib
     sqlite3 (1.4.1)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -69,6 +71,7 @@ DEPENDENCIES
   sinatra
   sinatra-activerecord
   sinatra-contrib
+  sinatra-reloader
   sqlite3
   tux
 
