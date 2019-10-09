@@ -1,57 +1,59 @@
 <h2>Your cart</h2>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-    </tr>
-  </thead>
+<div id="cart">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+      </tr>
+    </thead>
 
-  <tbody>
-  		<%i = 1%>
-      <%total_price = 0%>
-  	  	<% @orders.each do |key,value| %>
-          <tr>
-		  	  	<th scope="row"><%=i%></th>
-    				<td> <%= Product.find_by(id: key).title %> </td>
-            <td> <%= Product.find_by(id: key).price %> </td>
-    				<td> <%= value%> </td>
-    			</tr>
-			    <%i += 1%>
-          <%total_price += Product.find_by(id: key).price * value.to_i%>
-    		<%end%>
-          <tr>
-            <th></th>
-            <td></td>
-            <td> Total price: <%= total_price %> rub</td>
-            <td></td>
-          </tr>
+    <tbody>
+    		<%i = 1%>
+        <%total_price = 0%>
+    	  	<% @orders.each do |key,value| %>
+            <tr>
+  		  	  	<th scope="row"><%=i%></th>
+      				<td> <%= Product.find_by(id: key).title %> </td>
+              <td> <%= Product.find_by(id: key).price %> </td>
+      				<td> <%= value%> </td>
+      			</tr>
+  			    <%i += 1%>
+            <%total_price += Product.find_by(id: key).price * value.to_i%>
+      		<%end%>
+            <tr>
+              <th></th>
+              <td></td>
+              <td> Total price: <%= total_price %> rub</td>
+              <td></td>
+            </tr>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<form action="/place_order" method="POST">
+  <form action="/place_order" method="POST">
 
-  <input type="hidden" name="order[orders_input]" value="<%=@orders_input%>">
+    <input type="hidden" name="order[orders_input]" value="<%=@orders_input%>">
 
-  <div class="form-group">
-    <label>Name:</label>
-    <input name="order[name]" type="text" class="form-control" placeholder="Your name" value="<%=%>">
-  </div>
+    <div class="form-group">
+      <label>Name:</label>
+      <input name="order[name]" type="text" class="form-control" placeholder="Your name" value="<%=%>">
+    </div>
 
-  <div class="form-group">
-    <label>Phone:</label>
-    <input name="order[phone]" type="text" class="form-control" placeholder="Your phone" value="<%=%>">
-  </div>
-  
-  <div class="form-group">
-    <label>Delivery Address:</label>
-    <textarea name="order[address]" class="form-control" placeholder="Delivery address" value="<%=%>"></textarea>
-  </div>
+    <div class="form-group">
+      <label>Phone:</label>
+      <input name="order[phone]" type="text" class="form-control" placeholder="Your phone" value="<%=%>">
+    </div>
+    
+    <div class="form-group">
+      <label>Delivery Address:</label>
+      <textarea name="order[address]" class="form-control" placeholder="Delivery address" value="<%=%>"></textarea>
+    </div>
 
-   <button type="submit" class="btn btn-success btn-lg">Place this order!</button>
-   <button class="btn btn-danger btn-lg" onclick="return cancel_order()">Cancel</button>
+     <button type="submit" class="btn btn-success btn-lg">Place this order!</button>
+     <button class="btn btn-danger btn-lg" onclick="return cancel_order()">Cancel</button>
 
-</form>
+  </form>
+</div>
