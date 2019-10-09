@@ -35,9 +35,13 @@ get '/show_orders' do
 end
 
 post '/cart' do
+  @o = {}
+
   @orders_input = params[:orders]
   @orders = parse_orders_input @orders_input
-  @o = {}
+
+  return erb :cart_is_empty if @orders.length == 0
+
   erb :cart
 end
 
