@@ -9,6 +9,9 @@ class Product < ActiveRecord::Base
 end
 
 class Order < ActiveRecord::Base
+      validates :name, presence: true, length: { minimum: 2 }
+      validates :phone, presence: true, length: { minimum: 7 }
+      validates :address, presence: true, length: { minimum: 7 }
 end
 
 
@@ -35,8 +38,7 @@ get '/show_orders' do
 end
 
 post '/cart' do
-  @o = {}
-
+  
   @orders_input = params[:orders]
   @orders = parse_orders_input @orders_input
 
@@ -58,10 +60,11 @@ end
 post '/place_order' do
   @o = Order.new params[:order]
   if @o.save
-    erb :order_placed
+    return erb :order_placed
   else
     @error = @o.errors.full_messages.first
-    erb :cart
+
+  return erb :index
   end
 
 end
