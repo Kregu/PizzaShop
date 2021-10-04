@@ -3,7 +3,7 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'sinatra/activerecord'
 
-set :database, "sqlite3:pizzashop.db"
+set :database, adapter: 'sqlite3', database: 'pizzashop.db'
 
 class Product < ActiveRecord::Base
 end
@@ -38,11 +38,11 @@ get '/show_orders' do
 end
 
 post '/cart' do
-  
+
   @orders_input = params[:orders]
   @orders = parse_orders_input @orders_input
 
-  return erb :cart_is_empty if @orders.length == 0
+  return erb :cart_is_empty if @orders.length.zero?
 
   erb :cart
 end
@@ -53,7 +53,7 @@ end
 
 def parse_orders_input orders_input
   s = orders_input.gsub(/product_|=|,/, ' ')
-  return Hash[*s.split(' ')] 
+  Hash[*s.split(' ')]
 end
 
 
