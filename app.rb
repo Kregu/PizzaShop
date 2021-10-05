@@ -58,14 +58,12 @@ end
 
 
 post '/place_order' do
-  @o = Order.new params[:order]
-  if @o.save
-    return erb :order_placed
-  else
-    @error = @o.errors.full_messages.first
 
-  return erb :index
-  end
+  @o = Order.new params[:order]
+  return erb :order_placed if @o.save
+
+  @error = @o.errors.full_messages.first
+  erb :index
 
 end
 
