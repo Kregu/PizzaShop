@@ -3,6 +3,8 @@ Hello!
 
 This is PizzaShop with [Sinatra](http://www.sinatrarb.com/) and [Twitter Bootstrap](http://getbootstrap.com/).
 
+RubySchool, Lesson 31 - 36
+
 
 Go!
 ===
