@@ -32,11 +32,6 @@ get '/about' do
   erb :about
 end
 
-get '/show_orders' do
-  @orders_all = Order.order 'created_at DESC'
-  erb :show_orders
-end
-
 post '/cart' do
 
   @orders_input = params[:orders]
@@ -54,7 +49,7 @@ end
 get '/admin' do
   protected!
 
-  @orders = Order.all
+  @orders = Order.order 'created_at DESC'
   erb :admin
 end
 
@@ -83,7 +78,7 @@ helpers do
 
   def authorized?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == %w[admin admin]
   end
 end
 
