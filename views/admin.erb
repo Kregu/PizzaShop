@@ -9,9 +9,6 @@
       <th scope="col">Title</th>
       <th scope="col">Price</th>
       <th scope="col">Quantity</th>
-      <th scope="col">Name</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Address</th>
     </tr>
     </thead>
 
@@ -27,9 +24,6 @@
         <td> <%= Product.find_by(id: key).title %> </td>
         <td> <%= Product.find_by(id: key).price %> </td>
         <td> <%= value%> </td>
-        <td> <%= row.name%> </td>
-        <td> <%= row.phone%> </td>
-        <td> <%= row.address%> </td>
       </tr>
       <%i += 1%>
       <%total_price += Product.find_by(id: key).price * value.to_i%>
@@ -40,7 +34,11 @@
       <td> Total price: <%= total_price %> rub</td>
       <td></td>
     </tr>
-
     </tbody>
+    <hr />
+    <p><%= row.name%></p>
+    <p><%= row.phone%></p>
+    <p><%= row.address%></p>
+    <p><%= row.created_at%></p>
+  </table>
 <%end%>
-</table>
