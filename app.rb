@@ -51,6 +51,11 @@ post '/order' do
   erb 'Hello from order!'
 end
 
+get '/admin' do
+  @orders = Order.all
+  erb :admin
+end
+
 def parse_orders_input orders_input
   s = orders_input.gsub(/product_|=|,/, ' ')
   Hash[*s.split(' ')]
@@ -66,6 +71,7 @@ post '/place_order' do
   erb :index
 
 end
+
 
 
 
